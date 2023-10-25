@@ -1,0 +1,16 @@
+opam-version: "2.0"
+version: "0.0.0-dev"
+synopsis: "TODO"
+license: "MIT"
+maintainer: "Kate <kit-ty-kate@outlook.com>"
+authors: [
+  "Kate <kit-ty-kate@outlook.com>"
+]
+homepage: "https://github.com/kit-ty-kate/opam-diff"
+dev-repo: "git+https://github.com/kit-ty-kate/opam-diff"
+bug-reports: "https://github.com/kit-ty-kate/opam-diff/issues"
+build: ["dune" "build" "-p" name "-j" jobs]
+depends: [
+  "ocaml" {>= "4.08"}
+  "dune" {>= "2.0"}
+]
