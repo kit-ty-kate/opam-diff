@@ -4,30 +4,30 @@ let rec diff l1 l2 = match l1, l2 with
         let v1 = OpamPrinter.FullPos.Normalise.value v1 in
         let v2 = OpamPrinter.FullPos.Normalise.value v2 in
         if not (String.equal v1 v2) then begin
-          Printf.printf "- %s: %s\n+ %s: %s\n" k1 v1 k2 v2;
+          Printf.printf "- %s: %s\n+ %s: %s\n\n" k1 v1 k2 v2;
         end;
         diff xs ys
       end else if List.exists (fun (k, _) -> String.equal k2 k) xs then begin
         let v1 = OpamPrinter.FullPos.Normalise.value v1 in
-        Printf.printf "- %s: %s\n" k1 v1;
+        Printf.printf "- %s: %s\n\n" k1 v1;
         diff xs l2
       end else if List.exists (fun (k, _) -> String.equal k1 k) ys then begin
         let v2 = OpamPrinter.FullPos.Normalise.value v2 in
-        Printf.printf "+ %s: %s\n" k2 v2;
+        Printf.printf "+ %s: %s\n\n" k2 v2;
         diff l1 ys
       end else begin
         let v1 = OpamPrinter.FullPos.Normalise.value v1 in
         let v2 = OpamPrinter.FullPos.Normalise.value v2 in
-        Printf.printf "- %s: %s\n+ %s: %s\n" k1 v1 k2 v2;
+        Printf.printf "- %s: %s\n\n+ %s: %s\n\n" k1 v1 k2 v2;
         diff xs ys
       end
   | (k, v) :: xs, [] ->
       let v = OpamPrinter.FullPos.Normalise.value v in
-      Printf.printf "- %s: %s\n" k v;
+      Printf.printf "- %s: %s\n\n" k v;
       diff xs []
   | [], (k, v) :: ys ->
       let v = OpamPrinter.FullPos.Normalise.value v in
-      Printf.printf "+ %s: %s\n" k v;
+      Printf.printf "+ %s: %s\n\n" k v;
       diff [] ys
   | [], [] -> ()
 
